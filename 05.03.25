@@ -1,4 +1,4 @@
-import requests  # Importē bibliotēku API pieprasījumu veikšanai
+import requests  
 
 def get_cat_fact():
     """Šī funkcija iegūst nejaušu kaķu faktu un saglabā to failā."""
