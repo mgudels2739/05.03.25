@@ -7,7 +7,6 @@ def get_cat_fact():
     data = response.json() 
     fact = data["fact"]  
 
-    # Saglabā faktu failā
     with open("cat_facts.txt", "a", encoding="utf-8") as file:
         file.write(fact + "\n\n")
 
