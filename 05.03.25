@@ -1,0 +1,35 @@
+import requests  # Importē bibliotēku API pieprasījumu veikšanai
+
+def get_cat_fact():
+    """Šī funkcija iegūst nejaušu kaķu faktu un saglabā to failā."""
+    url = "https://catfact.ninja/fact"
+    response = requests.get(url)  
+    data = response.json() 
+    fact = data["fact"]  
+
+    # Saglabā faktu failā
+    with open("cat_facts.txt", "a", encoding="utf-8") as file:
+        file.write(fact + "\n\n")
+
+    return fact  
+
+def main():
+    """Galvenā programma, kas ļauj lietotājam iegūt jaunus faktus."""
+    while True:
+        command = input("Ievadiet 'new', lai iegūtu faktu, vai 'exit', lai izietu: ").strip().lower()
+        
+        if command == 'new':
+            fact = get_cat_fact()
+            print("\nNejaušs kaķu fakts:")
+            print(fact)
+            print("\nFakts saglabāts failā 'cat_facts.txt'.")
+        
+        elif command == 'exit':
+            print("Programma beidzas.")
+            break
+        
+        else:
+            print("Nederīga komanda. Mēģiniet vēlreiz.")
+
+if __name__ == "__main__":
+    main()
